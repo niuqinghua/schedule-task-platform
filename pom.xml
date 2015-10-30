@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dream.diamond</groupId>
+        <artifactId>prehnite-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.github</groupId>
+    <artifactId>schedule-task-platform</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <schedule-task.version>1.0-SNAPSHOT</schedule-task.version>
+    </properties>
+
+    <modules>
+        <module>schedule-task-api</module>
+        <module>schedule-task-service</module>
+        <module>schedule-task-client</module>
+        <module>schedule-task-web</module>
+        <module>schedule-task-support</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github</groupId>
+                <artifactId>schedule-task-api</artifactId>
+                <version>${schedule-task.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github</groupId>
+                <artifactId>schedule-task-support</artifactId>
+                <version>${schedule-task.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
