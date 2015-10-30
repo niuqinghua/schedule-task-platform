@@ -1,4 +1,4 @@
-package com.github.schedule.task.service;
+package com.github.schedule.task.protocol;
 
 import com.github.schedule.task.dto.ResultDto;
 import com.github.schedule.task.dto.TaskDto;

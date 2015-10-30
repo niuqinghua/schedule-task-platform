@@ -3,7 +3,6 @@ package com.github.schedule.task.service.impl;
 import com.github.schedule.task.constants.TaskStatus;
 import com.github.schedule.task.dao.TaskDao;
 import com.github.schedule.task.domain.Task;
-import com.github.schedule.task.service.FailTaskService;
 import com.github.schedule.task.service.HistoryTaskService;
 import com.github.schedule.task.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class TaskServiceImpl implements TaskService {
     private TaskDao taskDao;
 
     @Autowired
-    private FailTaskService failTaskService;
+    private com.github.schedule.task.service.FailTaskService failTaskService;
 
     @Autowired
     private HistoryTaskService historyTaskService;

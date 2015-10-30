@@ -1,7 +1,7 @@
 package com.github.schedule.task.executor;
 
 import com.github.schedule.task.dto.TaskDto;
-import com.github.schedule.task.service.FailTaskService;
+import com.github.schedule.task.protocol.FailTaskService;
 import com.github.schedule.task.utils.ResultUtils;
 
 /**
