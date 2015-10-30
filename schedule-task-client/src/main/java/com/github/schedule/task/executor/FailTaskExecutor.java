@@ -1,7 +1,7 @@
 package com.github.schedule.task.executor;
 
 import com.github.schedule.task.dto.TaskDto;
-import com.github.schedule.task.protocol.FailTaskService;
+import com.github.schedule.task.protocol.FailTaskDubboService;
 import com.github.schedule.task.utils.ResultUtils;
 
 /**
@@ -9,24 +9,24 @@ import com.github.schedule.task.utils.ResultUtils;
  */
 public class FailTaskExecutor extends AbstractJobExecutor {
 
-    private FailTaskService failTaskService;
+    private FailTaskDubboService failTaskDubboService;
 
     @Override
     protected TaskDto getOneTask(int type) {
-        return failTaskService.getOneTask(type);
+        return failTaskDubboService.getOneTask(type);
     }
 
     @Override
     protected void executeSuccess(TaskDto task) {
-        failTaskService.notice(ResultUtils.buildSuccessResult(task));
+        failTaskDubboService.notice(ResultUtils.buildSuccessResult(task));
     }
 
     @Override
     protected void executeFail(TaskDto task) {
-        failTaskService.notice(ResultUtils.buildFailResult(task));
+        failTaskDubboService.notice(ResultUtils.buildFailResult(task));
     }
 
-    public void setFailTaskService(FailTaskService failTaskService) {
-        this.failTaskService = failTaskService;
+    public void setFailTaskDubboService(FailTaskDubboService failTaskDubboService) {
+        this.failTaskDubboService = failTaskDubboService;
     }
 }

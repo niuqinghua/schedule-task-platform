@@ -6,12 +6,14 @@ import com.github.schedule.task.domain.Task;
 import com.github.schedule.task.service.HistoryTaskService;
 import com.github.schedule.task.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 /**
  * Created by niuqinghua on 15/10/30.
  */
+@Service("taskService")
 public class TaskServiceImpl implements TaskService {
 
     @Autowired
@@ -24,8 +26,11 @@ public class TaskServiceImpl implements TaskService {
     private HistoryTaskService historyTaskService;
 
     @Override
-    public Task getOne() {
-        Task task = taskDao.getOne();
+    public Task getOne(int type) {
+        Task task = taskDao.getOne(type);
+        if (task == null) {
+            return null;
+        }
         int affectedCount = updateStatus(task);
         if (affectedCount == 0) {
             return null;
@@ -34,8 +39,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task getByBusinessId(String businessId) {
-        return taskDao.getByBusinessId(businessId);
+    public Task get(long id) {
+        return taskDao.get(id);
     }
 
     @Override

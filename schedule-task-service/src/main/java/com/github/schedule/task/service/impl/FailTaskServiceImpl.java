@@ -23,13 +23,22 @@ public class FailTaskServiceImpl implements FailTaskService {
     private HistoryTaskService historyTaskService;
 
     @Override
-    public Task getOne() {
-        return failTaskDao.getOne();
+    public Task getOne(int type) {
+        Task task = failTaskDao.getOne(type);
+        if (task == null) {
+            return null;
+        }
+        task.setStatus(TaskStatus.PROCESSING);
+        int affectedCount = update(task);
+        if (affectedCount == 0) {
+            return null;
+        }
+        return task;
     }
 
     @Override
-    public Task getByBusinessId(String businessId) {
-        return failTaskDao.getByBusinessId(businessId);
+    public Task get(long id) {
+        return failTaskDao.get(id);
     }
 
     @Override
@@ -56,6 +65,7 @@ public class FailTaskServiceImpl implements FailTaskService {
 
     @Override
     public void executeFail(Task task) {
+        task.setStatus(TaskStatus.UNPROCESS);
         task.setRetryCount(task.getRetryCount() + 1);
         task.setRetryTime(getRetryTimeForFailedTask(task));
         update(task);

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="consumer" />
+
+    <dubbo:reference interface="com.github.schedule.task.protocol.TaskDubboService"
+                     url="dubbo://127.0.0.1:20880/com.github.schedule.task.protocol.TaskDubboService"
+                     protocol="dubbo" timeout="10000" init="false"
+                     id="taskDubboService" check="false"/>
+
+    <dubbo:reference interface="com.github.schedule.task.protocol.FailTaskDubboService"
+                     url="dubbo://127.0.0.1:20880/com.github.schedule.task.protocol.FailTaskDubboService"
+                     protocol="dubbo" timeout="10000" init="false"
+                     id="failTaskDubboService" check="false"/>
+</beans>
+

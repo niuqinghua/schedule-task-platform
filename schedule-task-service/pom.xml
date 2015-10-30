@@ -48,5 +48,21 @@
             <artifactId>mybatis</artifactId>
             <version>3.3.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.15</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dream.diamond</groupId>
+            <artifactId>prehnite-embedded-tomcat</artifactId>
+        </dependency>
     </dependencies>
 </project>

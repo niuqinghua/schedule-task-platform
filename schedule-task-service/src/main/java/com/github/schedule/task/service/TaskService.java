@@ -7,9 +7,9 @@ import com.github.schedule.task.domain.Task;
  */
 public interface TaskService {
 
-    Task getOne();
+    Task getOne(int type);
 
-    Task getByBusinessId(String businessId);
+    Task get(long id);
 
     int updateStatus(Task task);
 

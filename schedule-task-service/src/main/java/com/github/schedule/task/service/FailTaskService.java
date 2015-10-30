@@ -7,9 +7,9 @@ import com.github.schedule.task.domain.Task;
  */
 public interface FailTaskService {
 
-    Task getOne();
+    Task getOne(int type);
 
-    Task getByBusinessId(String businessId);
+    Task get(long id);
 
     void add(Task task);
 

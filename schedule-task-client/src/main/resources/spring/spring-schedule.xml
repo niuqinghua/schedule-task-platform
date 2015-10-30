@@ -49,7 +49,7 @@
     </bean>
 
     <bean id="normalTaskExecutor" class="com.github.schedule.task.executor.NormalTaskExecutor">
-        <property name="taskService" ref="taskService"/>
+        <property name="taskDubboService" ref="taskDubboService"/>
         <property name="businessExecutors">
             <list>
                 <ref bean="businessExecutor" />
@@ -58,7 +58,7 @@
     </bean>
 
     <bean id="failTaskExecutor" class="com.github.schedule.task.executor.FailTaskExecutor">
-        <property name="failTaskService" ref="failTaskService"/>
+        <property name="failTaskDubboService" ref="failTaskDubboService"/>
         <property name="businessExecutors">
             <list>
                 <ref bean="businessExecutor" />

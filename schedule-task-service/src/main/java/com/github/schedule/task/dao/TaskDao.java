@@ -12,13 +12,13 @@ public interface TaskDao {
 
     @Select("select id, business_id as businessId, type, status, retry_interval as retryInterval, retry_count as retryCount, "
             + "retry_time as retryTime, content, created_time as createdTime, updated_time as updatedTime "
-            + "from task where status = 0 order by id asc limit 1")
-    Task getOne();
+            + "from task where status = 0 and type = #{type} order by id asc limit 1")
+    Task getOne(int type);
 
     @Select("select id, business_id as businessId, type, status, retry_interval as retryInterval, retry_count as retryCount, "
             + "retry_time as retryTime, content, created_time as createdTime, updated_time as updatedTime"
-            + " from task order where business_id = #{businessId}")
-    Task getByBusinessId(String businessId);
+            + " from task where id = #{id}")
+    Task get(long id);
 
     @Update("update task set status = #{status}, updated_time = NOW() where id = #{id}")
     int updateStatus(Task task);

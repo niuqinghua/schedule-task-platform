@@ -1,9 +1,11 @@
 package com.github.schedule.task.dto;
 
+import java.io.Serializable;
+
 /**
  * Created by niuqinghua on 15/10/30.
  */
-public class TaskDto {
+public class TaskDto implements Serializable {
 
     private long id;
 

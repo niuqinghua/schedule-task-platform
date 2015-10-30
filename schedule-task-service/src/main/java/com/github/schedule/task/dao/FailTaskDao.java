@@ -13,13 +13,13 @@ public interface FailTaskDao {
 
     @Select("select id, business_id as businessId, type, status, retry_interval as retryInterval, retry_count as retryCount, "
             + "retry_time as retryTime, content, created_time as createdTime, updated_time as updatedTime"
-            + " from fail_task order where status = 0 by retry_time asc limit 1")
-    Task getOne();
+            + " from fail_task where status = 0 and type = #{type} order by retry_time asc limit 1")
+    Task getOne(int type);
 
     @Select("select id, business_id as businessId, type, status, retry_interval as retryInterval, retry_count as retryCount, "
             + "retry_time as retryTime, content, created_time as createdTime, updated_time as updatedTime"
-            + " from fail_task order where business_id = #{businessId}")
-    Task getByBusinessId(String businessId);
+            + " from fail_task where id = #{id}")
+    Task get(long id);
 
     @Insert("insert into fail_task "
             + "values(#{id}, #{businessId}, #{type}, #{status}, #{retryInterval}, #{retryCount}, #{retryTime}, #{content}, #{createdTime}, NOW())")
