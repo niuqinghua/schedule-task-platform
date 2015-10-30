@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean name="startQuartz"
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="taskScheduleSimpleTrigger" />
+                <ref bean="failTaskScheduleSimpleTrigger" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="taskScheduleSimpleTrigger"
+          class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="taskScheduleJobDetail" />
+        <property name="startDelay" value="1000" />
+        <property name="repeatInterval" value="10000" />
+    </bean>
+
+    <bean id="failTaskScheduleSimpleTrigger"
+          class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="failTaskScheduleJobDetail" />
+        <property name="startDelay" value="1000" />
+        <property name="repeatInterval" value="10000" />
+    </bean>
+
+    <bean id="taskScheduleJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="taskSchedule" />
+        </property>
+        <property name="targetMethod">
+            <value>execute</value>
+        </property>
+    </bean>
+
+    <bean id="failTaskScheduleJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="failTaskSchedule" />
+        </property>
+        <property name="targetMethod">
+            <value>execute</value>
+        </property>
+    </bean>
+
+    <bean id="taskSchedule" class="com.github.schedule.task.executor.NormalTaskExecutor">
+        <property name="taskService" ref="taskService"/>
+        <property name="businessExecutors">
+            <list>
+                <ref bean="businessExecutor" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="failTaskSchedule" class="com.github.schedule.task.executor.FailTaskExecutor">
+        <property name="failTaskService" ref="failTaskService"/>
+        <property name="businessExecutors">
+            <list>
+                <ref bean="businessExecutor" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="businessExecutor" class="com.github.schedule.task.executor.SimpleBusinessExecutor">
+        <property name="businessType" value="1"/>
+    </bean>
+</beans>

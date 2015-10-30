@@ -7,7 +7,7 @@ import com.github.schedule.task.utils.ResultUtils;
 /**
  * Created by niuqinghua on 15/10/30.
  */
-public class NoramlTaskExecutor extends AbstractJobExecutor {
+public class NormalTaskExecutor extends AbstractJobExecutor {
 
     private TaskService taskService;
 
