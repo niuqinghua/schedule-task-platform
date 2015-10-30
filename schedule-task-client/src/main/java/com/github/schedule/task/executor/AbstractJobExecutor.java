@@ -20,8 +20,7 @@ abstract public class AbstractJobExecutor implements JobExecutor {
     public void execute() {
         if (!CollectionUtils.isEmpty(businessExecutors)) {
             for (BusinessExecutor businessExecutor : businessExecutors) {
-                int businessType = businessExecutor.getBusinessType();
-                TaskDto task = getOneTask(businessType);
+                TaskDto task = getOneTask(businessExecutor.getBusinessType());
                 if (task != null) {
                     executeTask(businessExecutor, task);
                 }

@@ -31,7 +31,7 @@
     <bean id="taskScheduleJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject">
-            <ref bean="taskSchedule" />
+            <ref bean="normalTaskExecutor" />
         </property>
         <property name="targetMethod">
             <value>execute</value>
@@ -41,14 +41,14 @@
     <bean id="failTaskScheduleJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject">
-            <ref bean="failTaskSchedule" />
+            <ref bean="failTaskExecutor" />
         </property>
         <property name="targetMethod">
             <value>execute</value>
         </property>
     </bean>
 
-    <bean id="taskSchedule" class="com.github.schedule.task.executor.NormalTaskExecutor">
+    <bean id="normalTaskExecutor" class="com.github.schedule.task.executor.NormalTaskExecutor">
         <property name="taskService" ref="taskService"/>
         <property name="businessExecutors">
             <list>
@@ -57,7 +57,7 @@
         </property>
     </bean>
 
-    <bean id="failTaskSchedule" class="com.github.schedule.task.executor.FailTaskExecutor">
+    <bean id="failTaskExecutor" class="com.github.schedule.task.executor.FailTaskExecutor">
         <property name="failTaskService" ref="failTaskService"/>
         <property name="businessExecutors">
             <list>
