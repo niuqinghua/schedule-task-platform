@@ -1,9 +1,8 @@
 package com.github.schedule.task.service;
 
 import com.github.schedule.task.domain.PageParameter;
+import com.github.schedule.task.domain.PageResult;
 import com.github.schedule.task.domain.TaskRetryRule;
-
-import java.util.List;
 
 /**
  * Created by niuqinghua on 15/10/31.
@@ -20,6 +19,6 @@ public interface TaskRetryRuleService {
 
     TaskRetryRule getByTaskType(int taskType);
 
-    List<TaskRetryRule> find(PageParameter pageParameter);
+    PageResult<TaskRetryRule> find(PageParameter pageParameter);
 
 }

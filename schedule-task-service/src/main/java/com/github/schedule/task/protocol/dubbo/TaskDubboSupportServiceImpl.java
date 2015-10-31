@@ -25,14 +25,16 @@ public class TaskDubboSupportServiceImpl implements TaskDubboSupportService {
     public void add(TaskDto taskDto) {
         int taskType = taskDto.getType();
         TaskRetryRule taskRetryRule = taskRetryRuleService.getByTaskType(taskType);
-        Task task = new Task();
-        task.setBusinessId(taskDto.getBusinessId());
-        task.setContent(taskDto.getContent());
-        task.setType(taskDto.getType());
-        task.setRetryCount(0);
-        task.setRetryInterval(taskRetryRule.getRetryInterval());
-        task.setRetryLimit(taskRetryRule.getRetryLimit());
-        taskService.add(task);
+        if (taskRetryRule != null) {
+            Task task = new Task();
+            task.setBusinessId(taskDto.getBusinessId());
+            task.setContent(taskDto.getContent());
+            task.setType(taskDto.getType());
+            task.setRetryCount(0);
+            task.setRetryInterval(taskRetryRule.getRetryInterval());
+            task.setRetryLimit(taskRetryRule.getRetryLimit());
+            taskService.add(task);
+        }
     }
 
 }

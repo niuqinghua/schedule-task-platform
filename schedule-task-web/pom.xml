@@ -17,6 +17,10 @@
             <artifactId>prehnite-application-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>dream.diamond</groupId>
+            <artifactId>prehnite-embedded-tomcat</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.github</groupId>
             <artifactId>schedule-task-support</artifactId>
         </dependency>

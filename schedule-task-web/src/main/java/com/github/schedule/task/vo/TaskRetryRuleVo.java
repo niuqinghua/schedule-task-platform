@@ -1,4 +1,4 @@
-package com.github.schedule.task.support.dto;
+package com.github.schedule.task.vo;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by niuqinghua on 15/10/31.
  */
-public class TaskRetryRuleDto implements Serializable {
+public class TaskRetryRuleVo implements Serializable {
 
     private long id;
 
