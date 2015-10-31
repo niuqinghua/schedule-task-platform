@@ -7,10 +7,10 @@
 
     <dubbo:application name="web" />
 
-    <dubbo:reference interface="com.github.schedule.task.support.protocol.TaskDubboSupportService"
-                     url="dubbo://127.0.0.1:20880/com.github.schedule.task.support.protocol.TaskDubboSupportService"
+    <dubbo:reference interface="com.github.schedule.task.protocol.TaskDubboService"
+                     url="dubbo://127.0.0.1:20880/com.github.schedule.task.protocol.TaskDubboService"
                      protocol="dubbo" timeout="10000" init="false"
-                     id="taskDubboSupportService" check="false"/>
+                     id="taskDubboService" check="false"/>
 
     <dubbo:reference interface="com.github.schedule.task.support.protocol.TaskRetryRuleDubboSupportService"
                      url="dubbo://127.0.0.1:20880/com.github.schedule.task.support.protocol.TaskRetryRuleDubboSupportService"

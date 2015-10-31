@@ -12,4 +12,5 @@ public interface TaskDubboService {
 
     void notice(ResultDto resultDto);
 
+    void add(TaskDto taskDto);
 }

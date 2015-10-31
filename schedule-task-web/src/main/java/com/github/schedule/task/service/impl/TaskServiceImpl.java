@@ -1,8 +1,8 @@
 package com.github.schedule.task.service.impl;
 
 import com.github.schedule.task.dto.TaskDto;
+import com.github.schedule.task.protocol.TaskDubboService;
 import com.github.schedule.task.service.TaskService;
-import com.github.schedule.task.support.protocol.TaskDubboSupportService;
 import com.github.schedule.task.vo.TaskVo;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ public class TaskServiceImpl implements TaskService {
     private DozerBeanMapper dozerBeanMapper;
 
     @Autowired
-    private TaskDubboSupportService taskDubboSupportService;
+    private TaskDubboService taskDubboService;
 
     @Override public void add(TaskVo taskVo) {
-        taskDubboSupportService.add(dozerBeanMapper.map(taskVo, TaskDto.class));
+        taskDubboService.add(dozerBeanMapper.map(taskVo, TaskDto.class));
     }
 
 }
