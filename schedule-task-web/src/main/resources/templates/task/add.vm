@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="content-type">
+    </head>
+    <body>
+        <form action="/task/create" method="post">
+            业务编号:<input name="businessId" type="text" value="" /><br>
+            业务类型:<input name="type" type="text" value="" /><br>
+            附加内容:<input name="content" type="text" value="" /><br>
+            <input name="submit" type="submit" value="提交" /><br>
+        </form>
+    </body>
+</html>

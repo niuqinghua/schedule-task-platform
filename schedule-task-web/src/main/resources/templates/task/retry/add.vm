@@ -1,0 +1,14 @@
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="content-type">
+</head>
+<body>
+<form action="/task/retry/rule/create" method="post">
+    业务类型:<input name="taskType" type="text" value="" /><br>
+    重试间隔:<input name="retryInterval" type="text" value="" /><br>
+    重试上限:<input name="retryLimit" type="text" value="" /><br>
+    记录状态:<input name="status" type="text" value="" /><br>
+    <input name="submit" type="submit" value="提交" /><br>
+</form>
+</body>
+</html>
