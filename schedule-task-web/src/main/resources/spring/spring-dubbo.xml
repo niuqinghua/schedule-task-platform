@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="web" />
+
+    <dubbo:reference interface="com.github.schedule.task.support.protocol.TaskDubboSupportService"
+                     url="dubbo://127.0.0.1:20880/com.github.schedule.task.support.protocol.TaskDubboSupportService"
+                     protocol="dubbo" timeout="10000" init="false"
+                     id="taskDubboSupportService" check="false"/>
+
+    <dubbo:reference interface="com.github.schedule.task.support.protocol.TaskRetryRuleDubboSupportService"
+                     url="dubbo://127.0.0.1:20880/com.github.schedule.task.support.protocol.TaskRetryRuleDubboSupportService"
+                     protocol="dubbo" timeout="10000" init="false"
+                     id="taskRetryRuleDubboSupportService" check="false"/>
+</beans>
+

@@ -1,7 +1,11 @@
 package com.github.schedule.task.service.impl;
 
+import com.github.schedule.task.dto.TaskDto;
 import com.github.schedule.task.service.TaskService;
+import com.github.schedule.task.support.protocol.TaskDubboSupportService;
 import com.github.schedule.task.vo.TaskVo;
+import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,8 +14,14 @@ import org.springframework.stereotype.Service;
 @Service("taskService")
 public class TaskServiceImpl implements TaskService {
 
-    @Override public void add(TaskVo taskVo) {
+    @Autowired
+    private DozerBeanMapper dozerBeanMapper;
 
+    @Autowired
+    private TaskDubboSupportService taskDubboSupportService;
+
+    @Override public void add(TaskVo taskVo) {
+        taskDubboSupportService.add(dozerBeanMapper.map(taskVo, TaskDto.class));
     }
 
 }

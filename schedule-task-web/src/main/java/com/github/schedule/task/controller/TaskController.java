@@ -17,7 +17,7 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping(value = "/add/${businessId}")
+    @RequestMapping(value = "/add/{businessId}")
     public void add(@PathVariable("businessId") String businessId) {
         TaskVo taskVo = new TaskVo();
         taskVo.setBusinessId(businessId);

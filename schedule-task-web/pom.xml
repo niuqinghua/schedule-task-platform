@@ -24,6 +24,24 @@
             <groupId>com.github</groupId>
             <artifactId>schedule-task-support</artifactId>
         </dependency>
+        <dependency>
+            <groupId>dream.diamond</groupId>
+            <artifactId>prehnite-dozer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

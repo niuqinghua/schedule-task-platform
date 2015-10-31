@@ -17,7 +17,7 @@ public class TaskRetryRuleController {
     @Autowired
     private TaskRetryRuleService taskRetryRuleService;
 
-    @RequestMapping(value = "/add/${type}")
+    @RequestMapping(value = "/add/{type}")
     public void add(@PathVariable("type") int type) {
         TaskRetryRuleVo taskRetryRuleVo = new TaskRetryRuleVo();
         taskRetryRuleVo.setTaskType(type);
