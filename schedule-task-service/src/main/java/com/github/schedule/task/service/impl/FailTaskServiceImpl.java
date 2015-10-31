@@ -65,10 +65,17 @@ public class FailTaskServiceImpl implements FailTaskService {
 
     @Override
     public void executeFail(Task task) {
-        task.setStatus(TaskStatus.UNPROCESS);
-        task.setRetryCount(task.getRetryCount() + 1);
-        task.setRetryTime(getRetryTimeForFailedTask(task));
-        update(task);
+        int retryCount = task.getRetryCount();
+        if (retryCount < task.getRetryLimit()) {
+            task.setStatus(TaskStatus.UNPROCESS);
+            task.setRetryCount(retryCount + 1);
+            task.setRetryTime(getRetryTimeForFailedTask(task));
+            update(task);
+        } else {
+            failTaskDao.delete(task.getId());
+            task.setStatus(TaskStatus.FAILED);
+            historyTaskService.add(task);
+        }
     }
 
     private Date getRetryTimeForFailedTask(Task task) {

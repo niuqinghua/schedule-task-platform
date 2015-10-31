@@ -15,6 +15,8 @@ public class Task extends BaseDomain {
 
     private int retryInterval;
 
+    private int retryLimit;
+
     private Date retryTime;
 
     private String content;
@@ -51,6 +53,14 @@ public class Task extends BaseDomain {
         this.retryInterval = retryInterval;
     }
 
+    public int getRetryLimit() {
+        return retryLimit;
+    }
+
+    public void setRetryLimit(int retryLimit) {
+        this.retryLimit = retryLimit;
+    }
+
     public Date getRetryTime() {
         return retryTime;
     }
@@ -67,13 +77,13 @@ public class Task extends BaseDomain {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "Task{" +
                 "businessId='" + businessId + '\'' +
                 ", type=" + type +
                 ", retryCount=" + retryCount +
                 ", retryInterval=" + retryInterval +
+                ", retryLimit=" + retryLimit +
                 ", retryTime=" + retryTime +
                 ", content='" + content + '\'' +
                 "} " + super.toString();

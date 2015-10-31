@@ -11,5 +11,10 @@
 
     <artifactId>schedule-task-support</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.github</groupId>
+            <artifactId>schedule-task-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

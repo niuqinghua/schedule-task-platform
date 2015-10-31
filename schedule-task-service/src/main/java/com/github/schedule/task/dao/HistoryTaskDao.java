@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Insert;
 public interface HistoryTaskDao {
 
     @Insert("insert into history_task "
-            + "values(#{id}, #{businessId}, #{type}, #{status}, #{retryInterval}, #{retryCount}, #{retryTime}, #{content}, #{createdTime}, #{updatedTime})")
+            + "values(#{id}, #{businessId}, #{type}, #{status}, #{retryInterval}, #{retryCount}, #{retryLimit}, #{retryTime}, #{content}, #{createdTime}, #{updatedTime})")
     void add(Task task);
 
 }

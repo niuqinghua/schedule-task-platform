@@ -11,6 +11,8 @@ public interface TaskService {
 
     Task get(long id);
 
+    void add(Task task);
+
     int updateStatus(Task task);
 
     int delete(Long id);

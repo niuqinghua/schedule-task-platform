@@ -44,6 +44,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public void add(Task task) {
+        taskDao.add(task);
+    }
+
+    @Override
     public int updateStatus(Task task) {
         return taskDao.updateStatus(task);
     }
